@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="356dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtViewUserUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtViewUserFullName"
+            android:layout_below="@+id/txtViewUserFullName"
+            android:layout_marginTop="15dp"
+            android:text="@string/att_txt_view_user_name"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/txtViewRemarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtViewUserUserName"
+            android:layout_below="@+id/txtViewUserUserName"
+            android:layout_marginTop="24dp"
+            android:text="@string/att_txt_view_remarks" />
+
+        <EditText
+            android:id="@+id/edtTextRemarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txtViewRemarks"
+            android:layout_alignBottom="@+id/txtViewRemarks"
+            android:layout_toRightOf="@+id/txtViewUserUserName"
+            android:ems="10"
+            android:inputType="text" >
+        </EditText>
+
+        <Button
+            android:id="@+id/btnPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnAbsent"
+            android:layout_alignBottom="@+id/btnAbsent"
+            android:layout_alignParentRight="true"
+            android:background="@color/btn_color_present"
+            android:padding="10dp"
+            android:text="@string/att_btn_presnet"
+            android:textColor="@color/att_btn_color" />
+
+        <Button
+            android:id="@+id/btnImgNext"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/next" />
+
+        <Button
+            android:id="@+id/btnImgPrev"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/txtViewUserFullName"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/prev" />
+
+        <TextView
+            android:id="@+id/txtViewUserFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/btnImgNext"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/att_txt_view_full_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/btnAbsent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/edtTextRemarks"
+            android:layout_marginTop="28dp"
+            android:background="@color/btn_color_absent"
+            android:padding="10dp"
+            android:text="@string/att_btn_absent"
+            android:textColor="@color/att_btn_color" />
+
+    </RelativeLayout>
+
+</ScrollView>

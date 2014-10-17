@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.moodleattendance"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.moodleattendance.SelectAvtivity"
+            android:label="Select Course" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.Attendance"
+            android:label="Mark Attendance" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.Sessions"
+            android:label="Class Sessions" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.SelectGroup"
+            android:label="Select Group" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.CreateSession"
+            android:label="@string/title_create_session" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.AttendanceOverview"
+            android:label="Attendance Overview" >
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.Login"
+            android:label="Moodle" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.moodleattendance.Registration"
+            android:label="Registration" >
+        </activity>
+    </application>
+
+</manifest>

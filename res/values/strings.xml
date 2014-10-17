@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="host_course">http://elearning.sicsr.ac.in/course.php</string>
+	<string name="host_auth">http://elearning.sicsr.ac.in/auth.php</string>
+    <string name="app_name">Moodle Attendance</string>
+    <string name="action_home">Home</string>
+    <string name="action_logout">Logout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="select_program">Select Program</string>
+    <string name="select_batch">Select Batch</string>
+    <string name="select_course">Select Course</string>
+    <string name="create_session_session_time">Select Time</string>
+    <string name="create_session_btnCreateSession">Create Session</string>
+    <string name="title_create_session">Create Session</string>
+    <string name="attend_overview_session_completed">Session Completed</string>
+    <string name="attend_overview_session_completed_value">0</string>
+    
+    <string name="attend_overview_present">Present</string>
+    <string name="attend_overview_present_value">0</string>
+    
+    <string name="attend_overview_absent">Absent</string>
+    <string name="attend_overview_absent_value">0</string>
+
+	<string name="attend_overview_percent">Attendance Percent</string>
+    <string name="attend_overview_percent_value">0</string>
+    
+    
+    <string name="login_txt_user_hint">Enter User Name</string>
+    <string name="login_txt_pass_hint">Enter Password</string>
+    <string name="login_btn_login">Login</string>
+    <string name="login_btn_newuser"><a href="https://www.google.com">New User</a></string>
+    <string name="title_activity_register_activity">Register_activity</string>
+	
+    
+    <string name="register_app_name">Registration</string>
+    <string name="register_txt_uname">Enter User Name</string>
+    <string name="register_txt_pass">Enter Password</string>
+    <string name="register_txt_confpass">Confirm Password</string>
+    <string name="register_txt_email">Enter Email</string>
+    <string name="register_btn_submit">Submit</string>
+    <string name="register_btn_cancel">Cancel</string>
+    
+    <string name="btnCreateSession">+ Add Session</string>
+    <string name="txtViewSessionDate">Session Date</string>
+    <string name="txtViewSessionTime">Session Time</string>
+    <string name="txtViewDuration">Duration</string>
+    <string name="txtViewSessionDescription">Description</string>
+    
+    
+    <color name="item_color">#000000</color>
+    
+    
+    <color name="btn_color_absent">#D05A4E</color>
+    <color name="btn_color_present">#5DB05C</color>
+    <color name="att_btn_color">#FFFFFF</color>
+    <color name="session_add_session_color">#2F8BD0</color>
+    <color name="session_add_session_text_color">#FFFFFF</color>
+    <string name="att_txt_view_full_name">Full Name</string>
+    <string name="att_txt_view_user_name">User Name</string>
+    <string name="att_txt_view_remarks">Remarks</string>
+    <string name="att_btn_presnet">Present</string>
+    <string name="att_btn_absent">Absent</string>
+    
+    
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back" >
+
+    <TableRow
+        android:paddingLeft="10sp"
+        android:paddingTop="10sp" >
+
+        <TextView
+            android:id="@+id/txtViewSelectTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_course" />
+    </TableRow>
+
+    <TableRow
+        android:paddingLeft="30sp"
+        android:paddingTop="10sp" >
+
+        <Spinner
+            android:id="@+id/course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/txtViewSessionCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_session_completed" />
+
+        <TextView
+            android:id="@+id/txtViewSessionCompletedValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_session_completed_value" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/txtViewPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_present" />
+
+        <TextView
+            android:id="@+id/txtViewPresentValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_present_value" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/txtViewAbsent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_absent" />
+
+        <TextView
+            android:id="@+id/txtViewAbsentValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_absent_value" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/txtViewPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_percent" />
+
+        <TextView
+            android:id="@+id/txtViewPercentValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30sp"
+            android:paddingTop="10sp"
+            android:text="@string/attend_overview_percent_value" />
+    </TableRow>
+
+</TableLayout>
