@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -49,17 +50,24 @@ public class CreateSession extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_session);
+		
+		btnCalendar = (Button) findViewById(R.id.btnCalendar);
+		btnTimePicker = (Button) findViewById(R.id.btnTimePicker);
+		btnCreateSession = (Button) findViewById(R.id.btnCreateSession);
+		edtTextSessionDescription = (EditText) findViewById(R.id.edtTextSessionDescription);
+		System.out.println("Indian edtTextSession="+edtTextSessionDescription);
+		spinnerHour = (Spinner) findViewById(R.id.spinnerHourDur);
+		spinnerMinute = (Spinner) findViewById(R.id.spinnerMinuteDur);
+		
+		if(getIntent().hasExtra("flag") && getIntent().getIntExtra("flag", 0) == 1) {
+			//came from Sessions, populate views
+		}
 		try {
 			NEW_URL = getResources().getString(R.string.host_course);
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		btnCalendar = (Button) findViewById(R.id.btnCalendar);
-		btnTimePicker = (Button) findViewById(R.id.btnTimePicker);
-		btnCreateSession = (Button) findViewById(R.id.btnCreateSession);
-		edtTextSessionDescription = (EditText) findViewById(R.id.edtTextSessionDescription);
-		spinnerHour = (Spinner) findViewById(R.id.spinnerHourDur);
-		spinnerMinute = (Spinner) findViewById(R.id.spinnerMinuteDur);
+		
 
 		List<String> lstArray;
 		ArrayAdapter<String> adapter;
@@ -82,6 +90,21 @@ public class CreateSession extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerMinute.setAdapter(adapter);
 
+		
+		/* Long Click */
+		OnLongClickListener longListener = new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
+		btnCalendar.setOnLongClickListener(longListener);
+		
+		
+		
+		
 		btnCalendar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -156,19 +179,23 @@ public class CreateSession extends Activity {
 							+ java.net.URLEncoder.encode(
 									edtTextSessionDescription.getText()
 											.toString(), "UTF-8");
-					Toast.makeText(getApplicationContext(), "in try", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getApplicationContext(), "in try", Toast.LENGTH_LONG).show();
+					System.out.println("#### url generated for create session : "+NEW_URL);
 				} catch (UnsupportedEncodingException e) {
-					Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_LONG).show();
 					e.printStackTrace();
 					
 				}
 				// Toast.makeText(getApplicationContext(), NEW_URL,
 				// Toast.LENGTH_LONG).show();
-				Toast.makeText(getApplicationContext(), NEW_URL, Toast.LENGTH_LONG).show();
-				Log.i("---------------query-------------", NEW_URL);
+				//Toast.makeText(getApplicationContext(), NEW_URL, Toast.LENGTH_LONG).show();
+				//Log.i("---------------query-------------", NEW_URL);
 				AddSession ses = new AddSession();
+				//Toast.makeText(getApplicationContext(), "This is ses :"+ses.toString(), Toast.LENGTH_LONG).show();
+				System.out.println("Just before ses.execute**************");
 				ses.execute("null");
-				Toast.makeText(getApplicationContext(), "after add session", Toast.LENGTH_LONG).show();
+				//Toast.makeText(getApplicationContext(), "after add session", Toast.LENGTH_LONG).show();
+				System.out.println("Just after ses.execute ************");
 			}
 		});
 		// Toast.makeText(getApplicationContext(), "sub id is" +
@@ -184,21 +211,24 @@ public class CreateSession extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			try {
+				
+				//Toast.makeText(getApplicationContext(), "inside do in BackGround", Toast.LENGTH_LONG).show();
 				url = new URL(NEW_URL);
-				//Log.e("---------------query-------------","above");
+				System.out.println(url+"########this is the url*****");
 				HttpURLConnection connection = (HttpURLConnection) url
 						.openConnection();
-				//Log.e("---------------query-------------","below");
+				System.out.println(connection+"this is connection!!*********");
 				connection.setDoInput(true);
 				connection.setDoOutput(true);
-				//Log.e("---------------query-------------","jhghj");
-
+				
 				BufferedReader reader = new BufferedReader(
 						new InputStreamReader(connection.getInputStream()));
 				String line = reader.readLine();
+				System.out.println("This is the return from the PHP "+line);
+				
 				//Log.e("---------------query-------------", line);
-
 				JSONObject ob = new JSONObject(line);
+				System.out.println("This is the ob converted by CreateSession ");
 				reader.close();
 				return ob.getString("status");
 			} catch (NullPointerException e) {
@@ -220,7 +250,7 @@ public class CreateSession extends Activity {
 		protected void onPostExecute(String status) {
 			try {
 				if (status.equals("OK")) {
-					Toast.makeText(getApplicationContext(), "Session created.",
+					Toast.makeText(getApplicationContext(), "Session has been created.",
 							Toast.LENGTH_SHORT).show();
 					Intent inet = new Intent(CreateSession.this, Sessions.class);
 					Bundle bndl = new Bundle();
@@ -233,9 +263,9 @@ public class CreateSession extends Activity {
 					finish();
 
 				} else {
-					Toast.makeText(getApplicationContext(),
-							"Please check your data.", Toast.LENGTH_SHORT)
-							.show();
+					//Toast.makeText(getApplicationContext(),
+					//		"Please check your data.", Toast.LENGTH_SHORT)
+					//		.show();
 				}
 			} catch (Exception e) {
 				e.getMessage();
@@ -274,7 +304,13 @@ public class CreateSession extends Activity {
 				editor.commit();
 				intentObj = new Intent(CreateSession.this, Login.class);
 				startActivity(intentObj);
+				Bundle bundle = new Bundle();
+				bundle.putString("url", "http://");
+				intentObj.putExtras(bundle);
 				finish();
+				
+				//retrieving
+				getIntent().getExtras().getString("url");
 			default:
 				return super.onOptionsItemSelected(item);
 			}
