@@ -54,7 +54,8 @@ public class Login extends Activity {
 
 			// for storing credentials into internal memory
 			pref = getApplicationContext().getSharedPreferences(
-					"MoodleCredentials", 0);
+					"MoodleCrede"
+					+ "ntials", 0);
 			if (!pref.getString("username", "null").equals("null")) {
 //				Toast.makeText(getApplicationContext(), "I am Here", Toast.LENGTH_LONG).show();
 				LoginTask lgn = new LoginTask();
@@ -100,28 +101,37 @@ public class Login extends Activity {
 				JSONObject json = new JSONObject();
 				json.put("username", arg0[0]);
 				json.put("password", arg0[1]);
-
+				System.out.println("username");
+				//System.out.println("#### This is the JSON written by Login.java"+json);
 				writer.write(json.toString());
 				writer.close();
 				BufferedReader reader = new BufferedReader(
 						new InputStreamReader(connection.getInputStream()));
 				String line = "";
+				int aaaaa=0;
+				System.out.println("Reached here!!");
 				while ((line = reader.readLine()) != null) {
-
+					aaaaa++;
+					//System.out.println("Read from the php line :"+aaaaa+"="+line);
 					JSONObject obj = new JSONObject(line);
 //					Log.e("--------------------------val-------------------------", obj.getString("userid"));
 					bndl.putString("userid", obj.getString("userid"));
+					//System.out.println("######LDAP"+line);					
+					//System.out.println("This is what we return eventually :"+obj.getString("status"));
 					return obj.getString("status");
 				}
 				reader.close();
 			} catch (MalformedURLException e) {
+				System.out.println("MalFormed"+e);
 				e.printStackTrace();
-
 			} catch (IOException e) {
+				System.out.println("IO"+e);
 				e.printStackTrace();
 			} catch (JSONException e) {
+				System.out.println("JSON"+e);
 				e.printStackTrace();
 			} catch (Exception e) {
+				System.out.println("??"+e);
 				e.printStackTrace();
 			}
 
@@ -133,7 +143,7 @@ public class Login extends Activity {
 			try {
 				if (status.equals("OK")) {
 					Toast.makeText(getApplicationContext(),
-							"Login successfull", Toast.LENGTH_SHORT).show();
+							"Login Successful", Toast.LENGTH_SHORT).show();
 					
 					Editor editor = pref.edit();
 					editor.putString("username", edtTextUserName.getText()
@@ -147,17 +157,16 @@ public class Login extends Activity {
 
 				} else {
 					Toast.makeText(getApplicationContext(),
-							"Wrong credentials. Please try again",
+							"Wrong credentials. Kindly try again",
 							Toast.LENGTH_SHORT).show();
 				}
 			} catch (Exception e) {
 				Toast.makeText(getApplicationContext(),
-						"Wrong credentials. Please try again",
+						"Check your network Connection",
 						Toast.LENGTH_SHORT).show();
 				// TODO: handle exception
 			}
 
 		}
 	}
-
 }
