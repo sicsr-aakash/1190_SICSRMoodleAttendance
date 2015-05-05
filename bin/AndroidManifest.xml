@@ -17,31 +17,31 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.moodleattendance.SelectAvtivity"
+            android:name=".SelectAvtivity"
             android:label="Select Course" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.Attendance"
+            android:name=".Attendance"
             android:label="Mark Attendance" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.Sessions"
+            android:name=".Sessions"
             android:label="Class Sessions" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.SelectGroup"
+            android:name=".SelectGroup"
             android:label="Select Group" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.CreateSession"
+            android:name=".CreateSession"
             android:label="@string/title_create_session" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.AttendanceOverview"
+            android:name=".AttendanceOverview"
             android:label="Attendance Overview" >
         </activity>
         <activity
-            android:name="com.example.moodleattendance.Login"
+            android:name=".Login"
             android:label="Moodle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,8 +50,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.moodleattendance.Registration"
+            android:name=".Registration"
             android:label="Registration" >
+        </activity>
+        <activity
+            android:name=".EditSession"
+            android:label="@string/title_activity_edit_session" >
         </activity>
     </application>
 
