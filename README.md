@@ -7,7 +7,7 @@ College / Institute Name : Symbiosis Institute of Computer Studies and Research
 
 City, State, Pin Code : Pune, Maharashtra, 411016
 
-Name/’s of the Students : Jitu Khubchandani, Jugal Panchal, Prabhu Narayanpethkar
+Name/’s of the Students : Jitu Khubchandani, Jugal Panchal, Prabhu Narayanpethkar, Deep Baweja, Rahul Makhija
 
 About (Short Description / Summary):
 
