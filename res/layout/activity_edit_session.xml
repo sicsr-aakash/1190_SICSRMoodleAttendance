@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewSessionDate" />
+
+        <requestFocus
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btnCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewSessionDate" 
+            
+            />
+
+        <TextView
+            android:id="@+id/txtView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewSessionTime" />
+
+        <Button
+            android:id="@+id/btnTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewSessionTime" />
+
+        <TextView
+            android:id="@+id/txtView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewDuration" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Spinner
+                android:id="@+id/spinnerHourDur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/spinnerMinuteDur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtViewSessionDescription" />
+
+        <EditText
+            android:id="@+id/edtTextSessionDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <Button
+            android:id="@+id/btnCreateSession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_session_btnCreateSession" />
+    </LinearLayout>
+
+</ScrollView>

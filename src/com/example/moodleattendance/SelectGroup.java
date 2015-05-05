@@ -53,10 +53,12 @@ public class SelectGroup extends Activity {
 			//Toast.makeText(getApplicationContext(), "Internet Working...", Toast.LENGTH_SHORT).show();
 			try {
 				if (getIntent().getExtras().getString("sub") != null) {
+					
 					NEW_URL = NEW_URL + "?groups&sub="
 							+ getIntent().getExtras().getString("sub");
 					// Toast.makeText(getApplicationContext(), NEW_URL,
 					// Toast.LENGTH_LONG).show();
+					System.out.println("#### This is the URL in selectGroup :"+NEW_URL);
 				}
 			} catch (NullPointerException e) {
 				e.printStackTrace();
@@ -75,6 +77,7 @@ public class SelectGroup extends Activity {
 					bndl.putString("sub",
 							getIntent().getExtras().getString("sub"));
 					bndl.putString("group", id.get(arg2).toString());
+					Toast.makeText(getApplicationContext(),"Group "+name.get(arg2) +" has been Selected",Toast.LENGTH_LONG).show();					
 					try{
 						bndl.putString("userid",
 								getIntent().getExtras().getString("userid"));
@@ -90,6 +93,7 @@ public class SelectGroup extends Activity {
 		} else {
 			Toast.makeText(getApplicationContext(), "Please check your internet connection...", Toast.LENGTH_LONG).show();
 		}
+		
 	}
 
 	private class DisplayGroupsAsyncTask extends
@@ -98,6 +102,7 @@ public class SelectGroup extends Activity {
 
 		@Override
 		protected String doInBackground(String... params) {
+			
 			try {
 				url = new URL(NEW_URL);
 				HttpURLConnection connection = (HttpURLConnection) url
@@ -109,6 +114,9 @@ public class SelectGroup extends Activity {
 				String line = reader.readLine();
 				reader.close();
 				return line;
+				
+				
+				
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			} catch (MalformedURLException e) {
@@ -118,24 +126,49 @@ public class SelectGroup extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 			return null;
 		}
 
 		protected void onPostExecute(String str) {
-			if (str != null) {
+			if(str.endsWith("[]}"))
+			{
+				Toast.makeText(getApplicationContext(),"Default Group has been selected Automatically",Toast.LENGTH_LONG).show();
+				
+					Intent inet = new Intent(SelectGroup.this,
+							CreateSession.class);
+					Bundle bndl = new Bundle();
+					try{
+
+						bndl.putString("sub",
+								getIntent().getExtras().getString("sub"));
+						bndl.putString("group","0");
+						bndl.putString("userid",
+								getIntent().getExtras().getString("userid"));
+					}
+					catch(Exception e){
+						e.printStackTrace();
+					}
+					inet.putExtras(bndl);
+					startActivity(inet);
+					finish();
+			}			
+			else if (str != null) {
 				try {
 					JSONObject ob = new JSONObject(str);
 					JSONObject obj = new JSONObject(ob.getString("groups"));
-					Iterator it = (Iterator) obj.keys();
+					Iterator it = (Iterator<?>) obj.keys();
 
 					name = new ArrayList<String>();
 					id = new ArrayList<Integer>();
-
+					
+					System.out.println(id.toString());
+					
 					while (it.hasNext()) {
 						Object tp = it.next();
-						id.add(new Integer(tp.toString()));
+						id.add(new Integer(tp.toString()));							
 						name.add(obj.getString(tp.toString()));
-					}
+					}				
 					CustomAdapter adapter = new CustomAdapter(
 							getApplicationContext(), name);
 					lstViewGroups.setAdapter(adapter);
@@ -143,7 +176,10 @@ public class SelectGroup extends Activity {
 					e.printStackTrace();
 				}
 			}
-		}
+				
+			
+			
+		}		
 	}
 
 	@Override
@@ -166,6 +202,7 @@ public class SelectGroup extends Activity {
 				intentObj.putExtras(bndl);
 				startActivity(intentObj);
 				finish();
+				
 				return true;
 			case R.id.action_logout:
 				SharedPreferences pref = getApplicationContext()
@@ -178,11 +215,13 @@ public class SelectGroup extends Activity {
 				startActivity(intentObj);
 				finish();
 			default:
+				
 				return super.onOptionsItemSelected(item);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		return true;
 	}
 }
