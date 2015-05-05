@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="host_course">http://elearning.sicsr.ac.in/course.php</string>
-    <string name="host_auth">http://elearning.sicsr.ac.in/auth.php</string>
+    <string name="host_auth">http://elearning.sicsr.ac.in/auth/auth.php</string>
     <string name="app_name">Moodle Attendance</string>
     <string name="action_home">Home</string>
     <string name="action_logout">Logout</string>
